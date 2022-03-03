@@ -83,3 +83,52 @@ console.log(
 - \W - любой символ кроме \w
 - \S - любой символ кроме \s
 - . - любой символ кроме \n
+
+
+
+###### \d - любая цифра
+
+```
+console.log(
+    /\d\d/.test('22 january')
+)
+console.log(
+    /\d/.test('22 january')
+)
+console.log(
+    /\d\d\d/.test('22 january')
+)
+```
+
+
+
+###### \w - латинская буква, цифра
+
+```
+console.log(
+    /\w/.test('22 january')
+)
+```
+
+
+
+###### \s - пробел
+
+
+```
+console.log(
+    /\s/.test('22 january')
+)
+console.log(
+    /\s/.test('22january')
+)
+```
+
+
+###### . - любой символ кроме \n
+
+```
+console.log(
+    /./.test('\n')
+)
+```
