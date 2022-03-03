@@ -208,7 +208,8 @@ console.log(/[^sdr]/.test('aaas')) // Любой символ кроме sdr
 
 ## Квантификаторы
 
-=== Самый простой квантификатор — это число в фигурных скобках: {n}.
+---
+Самый простой квантификатор — это число в фигурных скобках: {n}.
 
 Он добавляется к символу (или символьному классу, или набору [...] и т.д.) и указывает, сколько их нам нужно.
 
@@ -218,4 +219,99 @@ console.log(/[^sdr]/.test('aaas')) // Любой символ кроме sdr
 Шаблон \d{5} обозначает ровно 5 цифр, он эквивалентен \d\d\d\d\d.
 Диапазон: {3,5}, от 3 до 5 
 
-===
+---
+
+
+
+- {n}-точное количество
+- {n1, n2}-точное количество от n1 до n2
+- {n,}- от n1 и дальше
+
+```
+console.log(/\d{3}/.test('123'))
+console.log(/\d{3}/.test('12'))
+console.log(/\d{3,}/.test('123456789'))
+console.log(/\d{3,}/.test('123'))
+console.log(/\d{3,}/.test('12'))
+```
+
+
+## cокрашение квантификаторов
+
+- + { 1,}
+- ? { 0, 1}
+- * { 0,}
+
+```
+console.log(/\d+/.test('12'))
+console.log(/\d+/.test('ййййййй'))
+console.log(/\d?/.test(''))
+console.log(/\d?/.test('123'))
+console.log(/\d*/.test('1'))
+console.log(/\d*/.test(''))
+```
+
+
+## жадность и лень
+
+```
+console.log('I "love" or "like" tou'.match(/".+"/g));
+console.log('I "love" or "like" tou'.match(/".+?"/g));
+```
+
+
+## Группы захвата
+
+```
+console.log(/(go)+/.test('gogogoggo'))
+console.log(/(go){3}/.test('gogo'))
+console.log(/(go){3}/.test('gogogo'))
+
+console.log('I love you'.match(/(lo)ve/))
+console.log('I love you'.match(/(lo)(ve)/))
+console.log('I love you'.match(/(lo)(ve)/g))
+
+
+console.log('Asel Alimbaeva')
+console.log('Asel Alimbaeva'.replace(/(\w+) (\w+)/, '$2 $1'))
+console.log('Asel Alimbaeva'.replace(/(?:\w+) (\w+)/, '$2 $1'))
+console.log('Asel Alimbaeva'.replace(/(?:\w+) (\w+)/, '$1'))
+```
+
+
+## or или
+
+
+```
+console.log(/html|js|css/.test('I love html'))
+console.log(/html|js|css/.test('I love python'))
+```
+
+
+#### Примеры
+
+
+```
+
+const input = '    ';
+console.log(/\S/.test(input))
+
+const input2 = '  r  ';
+console.log(/\S/.test(input2))
+
+const input3 = '    I love html         ';
+console.log(input3.replace(/^\s+|\s+$/g, ''))
+console.log(input3.replace(/^\s+|\s+$/g, '').length)
+console.log(input3.trim())
+console.log(input3.trim().length)
+
+const input4 = 'I         love          html';
+console.log(input4.replace(/\s+/g, ' '))
+
+
+const checkUrl = 'https://webb.com';
+console.log(/^http(s)?:\/\//g.test(checkUrl))
+console.log(/^http(s)?:\/\/(\w+\.)+\w+$/g.test(checkUrl))
+
+
+```
