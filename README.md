@@ -57,7 +57,7 @@ console.log('i love you'.replace(/love/, 'like'));  // i like you
 console.log('i love you love'.replace(/love/, 'like'));  // i like you love
 console.log('i love you love'.replace(/love/g, 'like'));  //  i like you like
 console.log('i love you Love'.replace(/love/g, 'like'));  //  i like you Love
-console.log('i love you love'.replace(/love/gi, 'like'));  //  i like you like
+console.log('i love you Love'.replace(/love/gi, 'like'));  //  i like you like
 
 ```
 
